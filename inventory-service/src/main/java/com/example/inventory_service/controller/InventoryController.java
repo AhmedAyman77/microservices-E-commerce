@@ -1,5 +1,6 @@
 package com.example.inventory_service.controller;
 
+import com.example.inventory_service.dto.InventoryResponse;
 import com.example.inventory_service.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,9 +17,9 @@ public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @GetMapping("/{sku-code}")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public boolean isInStock(@PathVariable("sku-code") String skuCode) {
+    public List<InventoryResponse> isInStock(@RequestParam List<String> skuCode) {
         log.info("Received inventory check request for skuCode: {}", skuCode);
         return inventoryService.isInStock(skuCode);
     }

@@ -9,15 +9,36 @@
     <relativePath/>
   </parent>
 
+  <properties>
+    <maven.compiler.source>26</maven.compiler.source>
+    <maven.compiler.target>26</maven.compiler.target>
+    <spring-cloud.version>2025.1.2</spring-cloud.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <groupId>org.example</groupId>
   <artifactId>microservices-ecommerce</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Archetype - microservices-ecommerce</name>
   <url>http://maven.apache.org</url>
+
   <modules>
     <module>inventory-service</module>
     <module>order-service</module>
     <module>product-service</module>
+    <module>discovery-server</module>
   </modules>
+
 </project>
